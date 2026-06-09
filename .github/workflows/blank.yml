@@ -3,7 +3,10 @@ on: workflow_dispatch
 jobs:
   hello:
     runs-on: ubuntu-latest
-    steps: 
+    steps: T
       - name: hello step
-        run: echo "Welcome to Github Actions"
+        run: |
+          echo "Welcome to Github Actions"
+          echo "this is line one"
+          echo "this is line two"
     
