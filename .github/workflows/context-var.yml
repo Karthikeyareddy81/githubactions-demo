@@ -1,4 +1,4 @@
-name: context var demo
+name: Context var demo
 on: workflow_dispatch
 jobs:
   context_var:
@@ -8,3 +8,7 @@ jobs:
         run: |
           echo "This workflow is triggered by ${{github.actor}}"
           echo "The repository name is ${{github.repository}}"
+          echo "The branch is ${{github.ref_name}}"
+          
+      - name: print all variables under github
+        run: echo "${{toJson(github)}}"
