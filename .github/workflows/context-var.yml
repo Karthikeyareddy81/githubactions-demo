@@ -1,0 +1,10 @@
+name: context var demo
+on: workflow_dispatch
+jobs:
+  context_var:
+    runs-on: ubuntu-latest
+    steps:
+      - name: use contaxt variables
+        run: |
+          echo "This workflow is triggered by ${{github.actor}}"
+          echo "The repository name is ${{github.repository}}"
