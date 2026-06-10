@@ -12,3 +12,6 @@ jobs:
           
       - name: print all variables under github
         run: echo "${{toJson(github)}}"
+
+      - name: primt env variables
+        run: printenv
