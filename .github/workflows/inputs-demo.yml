@@ -3,12 +3,19 @@ on:
   workflow_dispatch:
     inputs:
       environmet:
-        description: Chose the env to deploy
+        description: Choose the env to deploy
         required: true
         default: dev
+        options:
+          - dev
+          - test
+          - prod
+      artifact_tag:
+        description: choose artifact to deploy
+        required: true
 jobs:
   inputs_demo:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy the app
-        run: echo "Deploy the application to ${{inputs.environmet}}"
+        run: echo "Deploy the application with ${{inputs.artifact_tag}} to ${{inputs.environmet}}"
