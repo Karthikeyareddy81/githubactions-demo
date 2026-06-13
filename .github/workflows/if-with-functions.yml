@@ -8,33 +8,33 @@ on:
 jobs:
     quality_checks:
         if: startswith(github.ref_name, 'feature/') && github.event_name == 'push'
-        runon: ubuntu-latest
+        runs-on: ubuntu-latest
         steps:
             - name: Perform code Quality
               run: echo "Performing quality checks on code"
     dev_deploy:
         if: github.ref_name == 'develop' && github.event_name == 'push'
-        runon: ubuntu-latest
+        runs-on: ubuntu-latest
         steps:
             - name: Deploy to Dev
               run: echo "Deploying to Dev environment"
     prod_deploy:
         if: github.ref_name == 'main' && github.event_name == 'push'
-        runon: ubuntu-latest
+        runs-on: ubuntu-latest
         steps:
             - name: Deploy to Prod
               run: echo "Deploying to Prod environment"
     success_notify:
         needs: ['quality_checks', 'dev_deploy', 'prod_deploy']
         if: always() && !failure()
-        runon: ubuntu-latest
+        runs-on: ubuntu-latest
         steps:
             - name: Notify Success
               run: echo "Workflow completed successfully!,successs mail sent to team"
     failure_notify:
         needs: ['quality_checks', 'dev_deploy', 'prod_deploy']
         if: failure()
-        runon: ubuntu-latest
+        runs-on: ubuntu-latest
         steps:
             - name: Notify Failure
               run: echo "Workflow failed!,failure mail sent to team"
